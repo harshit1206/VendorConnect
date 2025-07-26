@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VendorConnect Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+<!-- Top Green Bar -->
+<div class="w-full bg-green-700 text-white px-8 py-3 flex justify-between items-center shadow">
+  <div class="flex items-center gap-3">
+    <span class="font-extrabold text-2xl tracking-tight">VendorConnect</span>
+    <span class="bg-green-900/70 ml-2 px-3 py-1 rounded-full text-sm font-semibold">Vendor Dashboard</span>
+  </div>
+  <div class="flex items-center gap-3">
+    <span class="hidden sm:inline">Welcome, <span class="font-bold">User</span>!</span>
+    <img src="https://i.pravatar.cc/56?img=12" 
+         alt="Profile Picture"
+         class="w-11 h-11 rounded-full border-2 border-white shadow-md object-cover bg-gray-200"/>
+    <span class="inline-block bg-green-900 px-3 py-1 rounded text-xs">Active</span>
+  </div>
+</div>
+
+<div class="flex min-h-screen">
+  <!-- Sidebar -->
+  <aside class="hidden md:flex flex-col bg-white w-64 py-8 px-4 shadow-lg">
+    <div class="mb-10 flex items-center space-x-2">
+      <span class="font-extrabold text-xl text-green-700">Menu</span>
+    </div>
+    <nav class="flex flex-col gap-3">
+      <a href="#smart-supplier-discovery" class="py-2 px-4 rounded flex items-center gap-2 hover:bg-green-50 font-semibold text-green-700">
+        <span>🔎</span> Smart Supplier Discovery
+      </a>
+      <a href="#live-price-comparison" class="py-2 px-4 rounded flex items-center gap-2 hover:bg-green-50 font-semibold text-green-700">
+        <span>💰</span> Live Price Comparison
+      </a>
+      <a href="#group-ordering" class="py-2 px-4 rounded flex items-center gap-2 hover:bg-green-50 font-semibold text-green-700">
+        <span>🤝</span> Group Ordering System
+      </a>
+      <a href="#trust-quality" class="py-2 px-4 rounded flex items-center gap-2 hover:bg-green-50 font-semibold text-green-700">
+        <span>✅</span> Trust & Quality System
+      </a>
+      <a href="#community" class="py-2 px-4 rounded flex items-center gap-2 hover:bg-green-50 text-green-700">
+        <span>🌐</span> Community
+      </a>
+      <a href="#contact" class="py-2 px-4 rounded flex items-center gap-2 hover:bg-green-50 text-green-700">
+        <span>✉️</span> Contact Us
+      </a>
+      <button id="logoutBtn" class="mt-8 py-2 px-4 bg-red-600 hover:bg-red-700 text-white font-semibold rounded transition">Logout</button>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="flex-1 flex flex-col">
+    <!-- Mobile Topbar for Logout -->
+    <nav class="md:hidden flex justify-between items-center bg-white shadow px-4 py-3 sticky top-0 z-10">
+      <span class="font-extrabold text-xl text-green-700">VendorConnect</span>
+      <button id="logoutBtnMobile" class="px-3 py-1 bg-red-600 hover:bg-red-700 text-white rounded font-semibold">Logout</button>
+    </nav>
+    <main class="flex-1 max-w-6xl mx-auto p-6 md:p-10">
+
+      <!-- Dashboard Stats -->
+      <section class="mb-12">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+          <div class="bg-green-50 rounded-xl p-6 text-center shadow">
+            <div class="font-bold text-2xl text-green-700">5</div>
+            <div class="text-gray-600">Active Orders</div>
+          </div>
+          <div class="bg-yellow-100 rounded-xl p-6 text-center shadow">
+            <div class="font-bold text-2xl text-yellow-700">3</div>
+            <div class="text-gray-600">New Suppliers This Week</div>
+          </div>
+          <div class="bg-green-100 rounded-xl p-6 text-center shadow">
+            <div class="font-bold text-2xl text-green-700">₹12,000</div>
+            <div class="text-gray-600">This Month's Savings</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 1. Smart Supplier Discovery -->
+      <section id="smart-supplier-discovery" class="mb-14 scroll-mt-24">
+        <h2 class="text-2xl font-bold mb-4 text-green-700">Smart Supplier Discovery</h2>
+        <div class="grid gap-6 md:grid-cols-3">
+          <div>
+            <label class="block font-semibold mb-1">Location (within 5km)</label>
+            <input type="text" placeholder="Enter your location" class="w-full border border-gray-300 p-2 rounded">
+          </div>
+          <div>
+            <label class="block font-semibold mb-1">Item Type</label>
+            <select class="w-full border border-gray-300 p-2 rounded">
+              <option>All</option>
+              <option>Vegetables</option>
+              <option>Spices</option>
+              <option>Oil</option>
+              <option>Others</option>
+            </select>
+          </div>
+          <div>
+            <label class="block font-semibold mb-1">Price Range</label>
+            <select class="w-full border border-gray-300 p-2 rounded">
+              <option>All</option>
+              <option>Low &lt; ₹100</option>
+              <option>₹100 - ₹500</option>
+              <option>High &gt; ₹500</option>
+            </select>
+          </div>
+        </div>
+        <button class="bg-green-600 text-white px-5 py-2 mt-4 rounded hover:bg-green-700 transition">Search Suppliers</button>
+        <div class="mt-5 space-y-3">
+          <div class="p-4 border border-green-200 rounded-lg flex justify-between items-center shadow">
+            <div>
+              <h3 class="font-bold">Green Valley Vegetables</h3>
+              <p>Vegetables • within 3km • ₹2.50/kg</p>
+              <p class="text-yellow-600">★★★★☆</p>
+            </div>
+            <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-semibold">Verified</span>
+          </div>
+          <div class="p-4 border border-green-200 rounded-lg flex justify-between items-center shadow">
+            <div>
+              <h3 class="font-bold">SpiceHub</h3>
+              <p>Spices • within 4km • ₹8.00/kg</p>
+              <p class="text-yellow-600">★★★★★</p>
+            </div>
+            <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-semibold">Verified</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Live Price Comparison -->
+      <section id="live-price-comparison" class="mb-14 scroll-mt-24">
+        <h2 class="text-2xl font-bold mb-4 text-green-700">Live Price Comparison</h2>
+        <div class="overflow-x-auto">
+          <table class="w-full border-collapse border border-gray-200">
+            <thead class="bg-green-100">
+              <tr>
+                <th class="border py-2 px-3">Item</th>
+                <th class="border py-2 px-3">Supplier</th>
+                <th class="border py-2 px-3">Current Price</th>
+                <th class="border py-2 px-3">Your Target</th>
+                <th class="border py-2 px-3">Alert?</th>
+                <th class="border py-2 px-3">7-Day Trend</th>
+                <th class="border py-2 px-3">Bulk Discount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="border py-2 px-3">Tomatoes</td>
+                <td class="border py-2 px-3">Green Valley</td>
+                <td class="border py-2 px-3">₹3.00/kg</td>
+                <td class="border py-2 px-3">₹2.70/kg</td>
+                <td class="border py-2 px-3 text-green-500">No</td>
+                <td class="border py-2 px-3">▼ 5% this week</td>
+                <td class="border py-2 px-3">Extra 10% 100kg+</td>
+              </tr>
+              <tr>
+                <td class="border py-2 px-3">Turmeric</td>
+                <td class="border py-2 px-3">SpiceHub</td>
+                <td class="border py-2 px-3">₹8.50/kg</td>
+                <td class="border py-2 px-3">₹8.00/kg</td>
+                <td class="border py-2 px-3 text-red-600">Yes</td>
+                <td class="border py-2 px-3">▲ 3% this week</td>
+                <td class="border py-2 px-3">5% 50kg+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 3. Group Ordering System -->
+      <section id="group-ordering" class="mb-14 scroll-mt-24">
+        <h2 class="text-2xl font-bold mb-4 text-green-700">Group Ordering System</h2>
+        <p class="mb-3">Nearby vendors can collaborate to reach minimum order quantities and enjoy lower prices.</p>
+        <div class="space-y-4">
+          <div class="flex justify-between items-center border p-4 rounded">
+            <div>
+              <div class="font-bold">Bulk Rice Purchase</div>
+              <div>3/8 vendors joined • 2h 30m left</div>
+            </div>
+            <button class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Join</button>
+          </div>
+          <div class="flex justify-between items-center border p-4 rounded">
+            <div>
+              <div class="font-bold">Vegetables Combo</div>
+              <div>4/6 vendors joined • 1h 15m left</div>
+            </div>
+            <button class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Join</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. Trust & Quality System -->
+      <section id="trust-quality" class="mb-14 scroll-mt-24">
+        <h2 class="text-2xl font-bold mb-4 text-green-700">Trust & Quality System</h2>
+        <div class="space-y-5">
+          <div class="flex justify-between items-center border rounded p-4">
+            <div>
+              <div class="font-bold">Green Valley Vegetables</div>
+              <div class="text-yellow-500">Quality: ★★★★☆</div>
+              <div class="text-yellow-500">Delivery: ★★★★★</div>
+              <div class="text-yellow-500">Freshness: ★★★★★</div>
+              <div>Photo Verification: <span class="text-green-700 font-semibold">Available</span></div>
+            </div>
+            <div>
+              <span class="inline-block bg-green-200 text-green-700 px-3 py-1 rounded-full font-semibold">Verified</span>
+            </div>
+          </div>
+          <div class="flex justify-between items-center border rounded p-4">
+            <div>
+              <div class="font-bold">SpiceHub</div>
+              <div class="text-yellow-500">Quality: ★★★★★</div>
+              <div class="text-yellow-500">Delivery: ★★★★☆</div>
+              <div class="text-yellow-500">Freshness: ★★★★☆</div>
+              <div>Dispute Resolution: <span class="text-green-700 font-semibold">Enabled</span></div>
+            </div>
+            <div>
+              <span class="inline-block bg-green-200 text-green-700 px-3 py-1 rounded-full font-semibold">Verified</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Community Highlights -->
+      <section id="community" class="mb-14 scroll-mt-24">
+        <h2 class="text-2xl font-bold mb-4 text-green-700">Vendor Community Highlights</h2>
+        <ul class="list-disc list-inside text-gray-700 space-y-2">
+          <li>Upcoming meetup on August 10th - <a href="#" class="text-green-600 hover:underline">Register here</a></li>
+          <li>Community forum active with 150 new posts this week - <a href="#" class="text-green-600 hover:underline">Join discussion</a></li>
+          <li>New tips for bulk ordering published - <a href="#" class="text-green-600 hover:underline">Read now</a></li>
+        </ul>
+      </section>
+
+      <!-- Contact Us -->
+      <section id="contact" class="bg-green-100 rounded-xl p-8 mb-10 scroll-mt-24">
+        <h2 class="text-2xl font-bold text-green-700 mb-2 text-center">Contact Us</h2>
+        <form class="space-y-5 max-w-2xl mx-auto" autocomplete="off" onsubmit="event.preventDefault(); alert('Contact form submission!');">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div>
+              <label class="block font-semibold text-gray-800 mb-1">Name <span class="text-red-500">*</span></label>
+              <input type="text" required class="block w-full px-4 py-2 rounded border border-gray-300 focus:outline-green-400" placeholder="Your Name" />
+            </div>
+            <div>
+              <label class="block font-semibold text-gray-800 mb-1">Email <span class="text-red-500">*</span></label>
+              <input type="email" required class="block w-full px-4 py-2 rounded border border-gray-300 focus:outline-green-400" placeholder="you@example.com" />
+            </div>
+          </div>
+          <div>
+            <label class="block font-semibold text-gray-800 mb-1">Phone (optional)</label>
+            <input type="tel" class="block w-full px-4 py-2 rounded border border-gray-300 focus:outline-green-400" placeholder="Your Phone Number" />
+          </div>
+          <div>
+            <label class="block font-semibold text-gray-800 mb-1">Message <span class="text-red-500">*</span></label>
+            <textarea required rows="5" class="block w-full px-4 py-2 rounded border border-gray-300 focus:outline-green-400 resize-none" placeholder="How can we help?"></textarea>
+          </div>
+          <button type="submit" class="w-full md:w-auto bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-10 rounded-xl shadow transition">
+            Send Message
+          </button>
+          <div class="text-xs text-center mt-3 text-gray-500">We’ll get back to you within 1 business day.</div>
+        </form>
+      </section>
+
+    </main>
+  </div>
+</div>
+<script>
+  document.getElementById('logoutBtn').onclick = () => { location.reload(); };
+  document.getElementById('logoutBtnMobile').onclick = () =>{ location.reload(); };
+</script>
+</body>
+</html>
