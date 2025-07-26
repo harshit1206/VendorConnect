@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VendorConnect Seller Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-color: #fffaf0; /* soft yellowish background */
+      font-family: system-ui, sans-serif;
+      margin: 0;
+    }
+    .sidebar-bg {
+      background: #fef3c7; /* light yellow-100 */
+    }
+    .sidebar-text {
+      color: #b45309; /* amber-700 */
+    }
+    .sidebar-text-hover {
+      color: #92400e; /* amber-800 */
+    }
+    .header-bg {
+      background-color: #fef3c7; /* amber-100 */
+    }
+    .header-text {
+      color: #92400e; /* amber-800 */
+    }
+    .btn-primary {
+      background-color: #ca8a04; /* amber-600 */
+    }
+    .btn-primary:hover {
+      background-color: #a16207; /* amber-700 */
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- Top Bar -->
+  <div class="header-bg w-full p-4 flex items-center justify-between shadow sticky top-0 z-50">
+    <div class="flex items-center space-x-3">
+      <h1 class="text-3xl font-extrabold header-text tracking-tight select-none">VendorConnect</h1>
+      <span class="header-text bg-amber-600 text-white px-2 py-0.5 rounded font-semibold text-sm select-none">Seller Dashboard</span>
+    </div>
+    <div class="flex items-center space-x-4">
+      <span class="header-text hidden sm:inline">Welcome, <span class="font-semibold">Seller User</span></span>
+      <img src="https://i.pravatar.cc/48?u=seller" alt="Seller Profile" class="w-12 h-12 rounded-full shadow object-cover border-2 border-amber-600" />
+      <button id="logoutBtnMobile" class="btn-primary text-white px-4 py-1 rounded sm:hidden font-semibold focus:outline-none focus:ring-2 focus:ring-amber-700 focus:ring-offset-2">Logout</button>
+    </div>
+  </div>
+
+  <div class="flex flex-1 min-h-0">
+    <!-- Sidebar -->
+    <aside class="sidebar-bg hidden md:flex flex-col w-64 p-6 space-y-4 shadow border-r border-amber-200">
+      <h2 class="sidebar-text text-xl font-extrabold mb-6 select-none">Menu</h2>
+      <nav class="flex flex-col gap-3">
+        <a href="#inventory-dashboard" class="sidebar-text hover:sidebar-text-hover rounded px-3 py-2 cursor-pointer select-none font-semibold transition">📦 Inventory Dashboard</a>
+        <a href="#order-management" class="sidebar-text hover:sidebar-text-hover rounded px-3 py-2 cursor-pointer select-none font-semibold transition">🛒 Order Management</a>
+        <a href="#group-orders" class="sidebar-text hover:sidebar-text-hover rounded px-3 py-2 cursor-pointer select-none font-semibold transition">🤝 Group Orders</a>
+        <a href="#seller-badge" class="sidebar-text hover:sidebar-text-hover rounded px-3 py-2 cursor-pointer select-none font-semibold transition">⭐ Seller Badge & Verification</a>
+        <a href="#analytics" class="sidebar-text hover:sidebar-text-hover rounded px-3 py-2 cursor-pointer select-none font-semibold transition">📈 Analytics</a>
+        <a href="#community" class="sidebar-text hover:sidebar-text-hover rounded px-3 py-2 cursor-pointer select-none font-semibold transition">🌐 Community</a>
+        <a href="#contact" class="sidebar-text hover:sidebar-text-hover rounded px-3 py-2 cursor-pointer select-none font-semibold transition">✉️ Contact Us</a>
+        <button id="logoutBtn" class="text-white btn-primary mt-6 w-full py-2 rounded font-semibold focus:outline-none focus:ring-2 focus:ring-amber-700 focus:ring-offset-2">Logout</button>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 overflow-auto p-6 md:p-10 max-w-7xl mx-auto" tabindex="0">
+
+      <!-- Quick Stats -->
+      <section class="mb-12">
+        <div class="flex flex-wrap gap-6 justify-center md:justify-start">
+          <div class="bg-amber-100 rounded-xl p-6 shadow flex-1 min-w-[200px] max-w-xs text-center">
+            <div class="text-4xl font-extrabold sidebar-text">420</div>
+            <div class="text-lg sidebar-text font-semibold mt-1">Inventory Items</div>
+          </div>
+          <div class="bg-amber-100 rounded-xl p-6 shadow flex-1 min-w-[200px] max-w-xs text-center">
+            <div class="text-4xl font-extrabold sidebar-text">58</div>
+            <div class="text-lg sidebar-text font-semibold mt-1">Active Orders</div>
+          </div>
+          <div class="bg-amber-100 rounded-xl p-6 shadow flex-1 min-w-[200px] max-w-xs text-center">
+            <div class="text-4xl font-extrabold sidebar-text">₹1,25,000</div>
+            <div class="text-lg sidebar-text font-semibold mt-1">Total Sales This Month</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Inventory Dashboard -->
+      <section id="inventory-dashboard" class="mb-16 scroll-mt-28">
+        <h2 class="text-3xl font-extrabold sidebar-text mb-4">Inventory Dashboard</h2>
+        <p class="mb-3 text-amber-700">Manage your products and stock levels.</p>
+        <div class="overflow-x-auto rounded-lg shadow">
+          <table class="w-full border-collapse border border-amber-300 text-amber-800">
+            <thead class="bg-amber-200">
+              <tr>
+                <th class="border border-amber-300 py-2 px-4 text-left">Product</th>
+                <th class="border border-amber-300 py-2 px-4">Stock</th>
+                <th class="border border-amber-300 py-2 px-4">Price per Unit</th>
+                <th class="border border-amber-300 py-2 px-4">Category</th>
+                <th class="border border-amber-300 py-2 px-4">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-t border-amber-300 hover:bg-amber-100 transition cursor-pointer">
+                <td class="border border-amber-300 py-2 px-4">Potatoes</td>
+                <td class="border border-amber-300 py-2 px-4 text-center">150 kg</td>
+                <td class="border border-amber-300 py-2 px-4 text-center">₹30/kg</td>
+                <td class="border border-amber-300 py-2 px-4 text-center">Vegetables</td>
+                <td class="border border-amber-300 py-2 px-4 text-center"><button class="text-amber-700 hover:text-amber-900 font-semibold">Edit</button></td>
+              </tr>
+              <tr class="border-t border-amber-300 hover:bg-amber-100 transition cursor-pointer">
+                <td class="border border-amber-300 py-2 px-4">Turmeric Powder</td>
+                <td class="border border-amber-300 py-2 px-4 text-center">80 kg</td>
+                <td class="border border-amber-300 py-2 px-4 text-center">₹120/kg</td>
+                <td class="border border-amber-300 py-2 px-4 text-center">Spices</td>
+                <td class="border border-amber-300 py-2 px-4 text-center"><button class="text-amber-700 hover:text-amber-900 font-semibold">Edit</button></td>
+              </tr>
+              <!-- Add more rows as needed -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Order Management -->
+      <section id="order-management" class="mb-16 scroll-mt-28">
+        <h2 class="text-3xl font-extrabold sidebar-text mb-4">Order Management</h2>
+        <p class="mb-3 text-amber-700">Track and update your sales orders.</p>
+        <div class="overflow-x-auto rounded-lg shadow">
+          <table class="w-full border-collapse border border-amber-300 text-amber-800">
+            <thead class="bg-amber-200">
+              <tr>
+                <th class="border border-amber-300 py-2 px-4 text-left">Order #</th>
+                <th class="border border-amber-300 py-2 px-4">Buyer</th>
+                <th class="border border-amber-300 py-2 px-4">Order Date</th>
+                <th class="border border-amber-300 py-2 px-4">Total Amount</th>
+                <th class="border border-amber-300 py-2 px-4">Status</th>
+                <th class="border border-amber-300 py-2 px-4">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-t border-amber-300 hover:bg-amber-100 transition cursor-pointer">
+                <td class="border border-amber-300 py-2 px-4">ORD12345</td>
+                <td class="border border-amber-300 py-2 px-4">Street Vendor A</td>
+                <td class="border border-amber-300 py-2 px-4 text-center">2025-07-25</td>
+                <td class="border border-amber-300 py-2 px-4 text-center">₹7,500</td>
+                <td class="border border-amber-300 py-2 px-4 text-center"><span class="text-yellow-700 font-semibold">Pending</span></td>
+                <td class="border border-amber-300 py-2 px-4 text-center"><button class="text-amber-700 hover:text-amber-900 font-semibold">View</button></td>
+              </tr>
+              <tr class="border-t border-amber-300 hover:bg-amber-100 transition cursor-pointer">
+                <td class="border border-amber-300 py-2 px-4">ORD12343</td>
+                <td class="border border-amber-300 py-2 px-4">Street Vendor B</td>
+                <td class="border border-amber-300 py-2 px-4 text-center">2025-07-24</td>
+                <td class="border border-amber-300 py-2 px-4 text-center">₹3,200</td>
+                <td class="border border-amber-300 py-2 px-4 text-center"><span class="text-green-700 font-semibold">Delivered</span></td>
+                <td class="border border-amber-300 py-2 px-4 text-center"><button class="text-amber-700 hover:text-amber-900 font-semibold">View</button></td>
+              </tr>
+              <!-- Add more rows as needed -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Group Orders -->
+      <section id="group-orders" class="mb-16 scroll-mt-28">
+        <h2 class="text-3xl font-extrabold sidebar-text mb-4">Group Orders</h2>
+        <p class="mb-3 text-amber-700">Join group orders with other vendors to save costs on bulk buying.</p>
+        <div class="space-y-4">
+          <div class="border border-amber-300 rounded p-4 shadow flex justify-between items-center cursor-pointer hover:shadow-md">
+            <div>
+              <div class="font-bold">Bulk Rice Purchase</div>
+              <div>3 vendors joined • 2h 24min left</div>
+            </div>
+            <button class="btn-primary px-4 py-2 rounded text-white font-semibold hover:bg-amber-700 transition">Join</button>
+          </div>
+          <div class="border border-amber-300 rounded p-4 shadow flex justify-between items-center cursor-pointer hover:shadow-md">
+            <div>
+              <div class="font-bold">Vegetables Combo</div>
+              <div>4 vendors joined • 1h 5min left</div>
+            </div>
+            <button class="btn-primary px-4 py-2 rounded text-white font-semibold hover:bg-amber-700 transition">Join</button>
+          </div>
+          <!-- More group orders -->
+        </div>
+      </section>
+
+      <!-- Seller Badge & Verification -->
+      <section id="seller-badge" class="mb-16 scroll-mt-28">
+        <h2 class="text-3xl font-extrabold sidebar-text mb-4">Seller Badge & Verification</h2>
+        <p class="mb-3 text-amber-700">Your seller profile with trust badges, ratings, and verification status.</p>
+        <div class="border border-amber-300 rounded p-6 shadow flex justify-between items-center">
+          <div>
+            <div class="text-2xl font-bold sidebar-text">Verified Seller</div>
+            <p><span class="font-semibold">Rating:</span> ★★★★☆</p>
+            <p><span class="font-semibold">Dispute Resolution:</span> Enabled</p>
+            <p><span class="font-semibold">Photos Verified:</span> Yes</p>
+          </div>
+          <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Verified Badge" class="w-16 h-16" />
+        </div>
+      </section>
+
+      <!-- Analytics -->
+      <section id="analytics" class="mb-16 scroll-mt-28">
+        <h2 class="text-3xl font-extrabold sidebar-text mb-4">Analytics</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-amber-100 rounded-xl p-6 shadow">
+            <h3 class="font-semibold mb-2 sidebar-text">Sales Overview</h3>
+            <p>Total sales rose by 15% this month.</p>
+          </div>
+          <div class="bg-amber-100 rounded-xl p-6 shadow">
+            <h3 class="font-semibold mb-2 sidebar-text">Top Products</h3>
+            <ul class="list-disc list-inside text-amber-700">
+              <li>Potatoes</li>
+              <li>Tomatoes</li>
+              <li>Turmeric Powder</li>
+            </ul>
+          </div>
+          <div class="bg-amber-100 rounded-xl p-6 shadow">
+            <h3 class="font-semibold mb-2 sidebar-text">Customer Insights</h3>
+            <p>Highest demand from Downtown district.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Community -->
+      <section id="community" class="mb-16 scroll-mt-28">
+        <h2 class="text-3xl font-extrabold sidebar-text mb-4">Community</h2>
+        <p>Engage with other vendors and get help.</p>
+        <ul class="list-disc list-inside text-amber-700 max-w-xl">
+          <li><a href="#" class="hover:underline">Join the Vendor Forum</a></li>
+          <li><a href="#" class="hover:underline">Upcoming Events</a></li>
+          <li><a href="#" class="hover:underline">Support Portal</a></li>
+        </ul>
+      </section>
+
+      <!-- Contact Us -->
+      <section id="contact" class="mb-10 rounded-xl bg-amber-100 p-8 shadow max-w-xl mx-auto">
+        <h2 class="text-3xl sidebar-text font-extrabold mb-4 text-center">Contact Us</h2>
+        <form class="max-w-lg mx-auto space-y-5" autocomplete="off" onsubmit="event.preventDefault(); alert('Contact form submission! (backend integration pending)')">
+          <div>
+            <label class="block font-semibold sidebar-text mb-1">Name<span class="text-red-600">*</span></label>
+            <input type="text" required class="w-full p-3 rounded border border-amber-400 focus:outline-amber-700" placeholder="Your Name" />
+          </div>
+          <div>
+            <label class="block font-semibold sidebar-text mb-1">Email<span class="text-red-600">*</span></label>
+            <input type="email" required class="w-full p-3 rounded border border-amber-400 focus:outline-amber-700" placeholder="you@example.com" />
+          </div>
+          <div>
+            <label class="block font-semibold sidebar-text mb-1">Phone (optional)</label>
+            <input type="tel" class="w-full p-3 rounded border border-amber-400 focus:outline-amber-700" placeholder="Your Phone Number" />
+          </div>
+          <div>
+            <label class="block font-semibold sidebar-text mb-1">Message<span class="text-red-600">*</span></label>
+            <textarea required rows="5" class="w-full p-3 rounded border border-amber-400 focus:outline-amber-700 resize-none" placeholder="Your message"></textarea>
+          </div>
+          <button type="submit" class="btn-primary w-full p-3 rounded text-white text-lg font-semibold hover:bg-amber-700 transition">Send Message</button>
+          <p class="text-center text-amber-700 mt-2 text-sm">We will get back within 1 business day.</p>
+        </form>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<script>
+  // Logout button handlers reload page (replace with your logout & routing logic)
+  document.getElementById('logoutBtn').addEventListener('click', () => {
+    location.reload();
+  });
+  document.getElementById('logoutBtnMobile').addEventListener('click', () => {
+    location.reload();
+  });
+
+  // Scroll smooth behavior for navigation
+  document.querySelectorAll('aside nav a').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const targetId = link.getAttribute('href').substring(1);
+      const el = document.getElementById(targetId);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
