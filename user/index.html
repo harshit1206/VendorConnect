@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VendorConnect – Buyers Landing</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    function showLogin() {
+      hideForms();
+      document.getElementById('loginForm').classList.remove('hidden');
+    }
+    function showSignup() {
+      hideForms();
+      document.getElementById('signupForm').classList.remove('hidden');
+    }
+    function hideForms() {
+      document.getElementById('loginForm').classList.add('hidden');
+      document.getElementById('signupForm').classList.add('hidden');
+    }
+
+    async function login() {
+      const email = document.getElementById('loginEmail').value;
+      const password = document.getElementById('loginPassword').value;
+
+      const res = await fetch('http://localhost:5000/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      });
+
+      const data = await res.json();
+      if (res.ok) {
+        alert('Login successful! Welcome ' + data.user.name);
+        hideForms();
+      } else {
+        alert(data.message || 'Login failed');
+      }
+    }
+
+    async function signup() {
+      const name = document.getElementById('signupName').value;
+      const email = document.getElementById('signupEmail').value;
+      const password = document.getElementById('signupPassword').value;
+
+      const res = await fetch('http://localhost:5000/api/auth/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, password })
+      });
+
+      const data = await res.json();
+      if (res.ok) {
+        alert('Signup successful! You can now login.');
+        hideForms();
+      } else {
+        alert(data.message || 'Signup failed');
+      }
+    }
+  </script>
+
+</head>
+
+<body class="bg-gradient-to-b from-green-50 via-white to-green-100 min-h-screen font-sans">
+  <nav class="flex justify-between items-center px-8 py-5 bg-white shadow">
+    <span class="font-extrabold text-2xl text-green-700 tracking-tight">VendorConnect</span>
+    <div class="flex gap-5 text-green-900 font-semibold">
+      <a href="vendor-feature.html" class="hover:text-green-600">Features</a>
+      <a href="works.html" class="hover:text-green-600">How It Works</a>
+      <a href="community.html" class="hover:text-green-600">Community</a>
+      <a href="vendor-support.html" class="hover:text-green-600">Support</a>
+    </div>
+    <a href="index2.html"
+      class="px-5 py-2 rounded bg-green-700 text-white font-bold shadow hover:bg-green-800 transition">I AM A SELLER</a>
+  </nav>
+
+  <main class="flex flex-col items-center justify-center min-h-[80vh] text-center px-4">
+    <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-green-700 mb-4 mt-10">Source Ingredients. Save Hours
+      Daily.</h1>
+    <p class="text-lg sm:text-xl text-green-800 mb-10 max-w-xl">
+      Find nearby suppliers, compare prices, team up for bulk orders— all in one app built for street food vendors.
+    </p>
+    <div class="flex flex-col items-center justify-center gap-6 mb-10">
+
+      <a href="vendor-feature.html"
+        class="bg-green-600 hover:bg-green-700 text-white font-bold px-8 py-3 rounded-lg text-lg shadow transition">
+        SEE FEATURES
+      </a>
+
+      <div class="flex gap-4">
+        <button onclick="showLogin()"
+          class="px-5 py-2 bg-green-600 text-white rounded-full shadow hover:bg-green-700 transition">
+          Login
+        </button>
+        <button onclick="showSignup()"
+          class="px-5 py-2 bg-green-600 text-white rounded-full shadow hover:bg-green-700 transition">
+          Signup
+        </button>
+      </div>
+
+      <!-- Login Form -->
+      <div id="loginForm"
+        class="hidden bg-white/80 backdrop-blur-md p-6 rounded-2xl shadow-lg w-80 flex flex-col items-center">
+        <h2 class="text-xl font-semibold mb-4">Login</h2>
+        <input id="loginEmail" type="email" placeholder="Email"
+          class="w-full mb-2 px-4 py-2 border border-green-300 rounded-full focus:outline-none focus:ring-2 focus:ring-green-500" />
+        <input id="loginPassword" type="password" placeholder="Password"
+          class="w-full mb-4 px-4 py-2 border border-green-300 rounded-full focus:outline-none focus:ring-2 focus:ring-green-500" />
+        <button onclick="login()"
+          class="w-full bg-green-600 text-white py-2 rounded-full hover:bg-green-700 transition">Login</button>
+        <button onclick="hideForms()" class="w-full mt-2 text-sm text-green-700 hover:underline">Cancel</button>
+      </div>
+
+      <!-- Signup Form -->
+      <div id="signupForm"
+        class="hidden bg-white/80 backdrop-blur-md p-6 rounded-2xl shadow-lg w-80 flex flex-col items-center">
+        <h2 class="text-xl font-semibold mb-4">Signup</h2>
+        <input id="signupName" type="text" placeholder="Name"
+          class="w-full mb-2 px-4 py-2 border border-green-300 rounded-full focus:outline-none focus:ring-2 focus:ring-green-500" />
+        <input id="signupEmail" type="email" placeholder="Email"
+          class="w-full mb-2 px-4 py-2 border border-green-300 rounded-full focus:outline-none focus:ring-2 focus:ring-green-500" />
+        <input id="signupPassword" type="password" placeholder="Password"
+          class="w-full mb-4 px-4 py-2 border border-green-300 rounded-full focus:outline-none focus:ring-2 focus:ring-green-500" />
+        <button onclick="signup()"
+          class="w-full bg-green-600 text-white py-2 rounded-full hover:bg-green-700 transition">Signup</button>
+        <button onclick="hideForms()" class="w-full mt-2 text-sm text-green-700 hover:underline">Cancel</button>
+      </div>
+
+    </div>
+
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl w-full mx-auto bg-transparent">
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-bold text-green-700 text-lg mb-2">Smart Supplier Discovery</h3>
+          <p class="text-green-900">Find suppliers within 5km, filter by products, and view ratings instantly.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-green-700 text-lg mb-2">Group Ordering</h3>
+          <p class="text-green-900">Join with nearby food vendors to place joint orders for better rates.</p>
+        </div>
+      </div>
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-bold text-green-700 text-lg mb-2">Live Price Comparison</h3>
+          <p class="text-green-900">Instantly compare prices and get notified when your required ingredient is at the
+            best price.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-green-700 text-lg mb-2">Quality & Trust</h3>
+          <p class="text-green-900">View verified badges, supplier ratings, and dispute resolution for every deal.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+
+</html>
