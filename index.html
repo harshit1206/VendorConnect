@@ -1,58 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>VendorConnect Full Project with Contact Form</title>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>VendorConnect – Buyers Landing</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <!-- Dynamic content container -->
-  <div id="root"></div>
-
-  <!-- LOGIN MODAL -->
-  <div id="login-modal" class="modal-bg" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="login-modal-title" tabindex="-1">
-    <div class="modal-panel" role="document">
-      <button class="modal-close" id="login-close" aria-label="Close login modal">&times;</button>
-      <h2 id="login-modal-title" class="text-2xl font-bold mb-4 text-center">Login</h2>
-      <form autocomplete="off" class="space-y-4" onsubmit="event.preventDefault(); alert('Login form submit handled here');">
-        <label class="block font-semibold text-gray-700">
-          Email
-          <input type="email" required class="block mt-1 w-full px-3 py-2 border rounded focus:outline-green-400" placeholder="you@example.com" />
-        </label>
-        <label class="block font-semibold text-gray-700">
-          Password
-          <input type="password" required class="block mt-1 w-full px-3 py-2 border rounded focus:outline-green-400" placeholder="Password" />
-        </label>
-        <button type="submit" class="w-full py-2 bg-green-600 text-white font-bold rounded hover:bg-green-700 shadow transition">Login</button>
-      </form>
+<body class="bg-gradient-to-b from-green-50 via-white to-green-100 min-h-screen font-sans">
+  <nav class="flex justify-between items-center px-8 py-5 bg-white shadow">
+    <span class="font-extrabold text-2xl text-green-700 tracking-tight">VendorConnect</span>
+    <div class="flex gap-5 text-green-900 font-semibold">
+      <a href="vendor-feature.html" class="hover:text-green-600">Features</a>
+      <a href="works.html" class="hover:text-green-600">How It Works</a>
+      <a href="community.html" class="hover:text-green-600">Community</a>
+      <a href="vendor-support.html" class="hover:text-green-600">Support</a>
     </div>
-  </div>
+    <a href="index2.html" class="px-5 py-2 rounded bg-green-700 text-white font-bold shadow hover:bg-green-800 transition">I AM A SELLER</a>
+  </nav>
 
-  <!-- SIGN UP MODAL -->
-  <div id="signup-modal" class="modal-bg" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="signup-modal-title" tabindex="-1">
-    <div class="modal-panel" role="document">
-      <button class="modal-close" id="signup-close" aria-label="Close sign up modal">&times;</button>
-      <h2 id="signup-modal-title" class="text-2xl font-bold mb-4 text-center">Sign Up</h2>
-      <form autocomplete="off" class="space-y-4" onsubmit="event.preventDefault(); alert('Sign up form submit handled here');">
-        <label class="block font-semibold text-gray-700">
-          Email
-          <input type="email" required class="block mt-1 w-full px-3 py-2 border rounded focus:outline-amber-400" placeholder="you@example.com" />
-        </label>
-        <label class="block font-semibold text-gray-700">
-          Password
-          <input type="password" required class="block mt-1 w-full px-3 py-2 border rounded focus:outline-amber-400" placeholder="Password" />
-        </label>
-        <label class="block font-semibold text-gray-700">
-          Confirm Password
-          <input type="password" required class="block mt-1 w-full px-3 py-2 border rounded focus:outline-amber-400" placeholder="Confirm Password" />
-        </label>
-        <button type="submit" class="w-full py-2 bg-amber-500 text-white font-bold rounded hover:bg-amber-600 shadow transition">Create Account</button>
-      </form>
+  <main class="flex flex-col items-center justify-center min-h-[80vh] text-center px-4">
+    <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-green-700 mb-4 mt-10">Source Ingredients. Save Hours Daily.</h1>
+    <p class="text-lg sm:text-xl text-green-800 mb-10 max-w-xl">
+      Find nearby suppliers, compare prices, team up for bulk orders— all in one app built for street food vendors.
+    </p>
+    <div class="flex flex-wrap gap-4 justify-center mb-10">
+      <a href="vendor-feature.html" class="bg-green-600 hover:bg-green-700 text-white font-bold px-8 py-3 rounded-lg text-lg shadow transition">SEE FEATURES</a>
+      <a href="#" class="bg-white border border-green-700 text-green-700 font-bold px-8 py-3 rounded-lg text-lg transition shadow hover:bg-green-50">LOGIN</a>
+      <a href="#" class="bg-green-50 border border-green-700 text-green-700 font-bold px-8 py-3 rounded-lg text-lg transition shadow hover:bg-green-100">SIGN UP</a>
     </div>
-  </div>
 
-<script src="app.js"></script>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl w-full mx-auto bg-transparent">
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-bold text-green-700 text-lg mb-2">Smart Supplier Discovery</h3>
+          <p class="text-green-900">Find suppliers within 5km, filter by products, and view ratings instantly.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-green-700 text-lg mb-2">Group Ordering</h3>
+          <p class="text-green-900">Join with nearby food vendors to place joint orders for better rates.</p>
+        </div>
+      </div>
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-bold text-green-700 text-lg mb-2">Live Price Comparison</h3>
+          <p class="text-green-900">Instantly compare prices and get notified when your required ingredient is at the best price.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-green-700 text-lg mb-2">Quality & Trust</h3>
+          <p class="text-green-900">View verified badges, supplier ratings, and dispute resolution for every deal.</p>
+        </div>
+      </div>
+    </div>
+  </main>
 </body>
 </html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vendor Support - VendorConnect</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-green-50 min-h-screen flex items-center justify-center px-4 py-12">
+
+  <main class="bg-white rounded-xl shadow-xl max-w-xl w-full p-8 sm:p-12">
+    <!-- Go Back Link -->
+    <a href="index.html" class="text-green-700 font-semibold mb-6 inline-block hover:underline">
+      ← Go Back
+    </a>
+
+    <h1 class="text-4xl font-extrabold text-green-700 mb-4 text-center">Vendor Support</h1>
+    <p class="text-green-900 mb-8 text-center text-lg">
+      If you’re a vendor and need assistance, please fill out this form. Our support team will get back to you soon.
+    </p>
+    <form id="vendorSupportForm" class="space-y-6" novalidate>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div>
+          <label for="vendorName" class="block mb-1 font-semibold text-green-700">
+            Name <span class="text-red-600">*</span>
+          </label>
+          <input type="text" id="vendorName" name="vendorName" placeholder="Your Name" required
+            class="w-full rounded-md border border-green-300 p-3 focus:outline-green-500 focus:ring-1 focus:ring-green-500" />
+        </div>
+        <div>
+          <label for="vendorEmail" class="block mb-1 font-semibold text-green-700">
+            Email <span class="text-red-600">*</span>
+          </label>
+          <input type="email" id="vendorEmail" name="vendorEmail" placeholder="you@example.com" required
+            class="w-full rounded-md border border-green-300 p-3 focus:outline-green-500 focus:ring-1 focus:ring-green-500" />
+        </div>
+      </div>
+
+      <div>
+        <label for="stallName" class="block mb-1 font-semibold text-green-700">
+          Stall/Cart Name <span class="text-red-600">*</span>
+        </label>
+        <input type="text" id="stallName" name="stallName" placeholder="Your Stall or Cart Name" required
+          class="w-full rounded-md border border-green-300 p-3 focus:outline-green-500 focus:ring-1 focus:ring-green-500" />
+      </div>
+
+      <div>
+        <label for="vendorPhone" class="block mb-1 font-semibold text-green-700">
+          Phone (optional)
+        </label>
+        <input type="tel" id="vendorPhone" name="vendorPhone" placeholder="Your Phone Number"
+          class="w-full rounded-md border border-green-300 p-3 focus:outline-green-500 focus:ring-1 focus:ring-green-500" />
+      </div>
+
+      <div>
+        <label for="issue" class="block mb-1 font-semibold text-green-700">
+          Issue / Query <span class="text-red-600">*</span>
+        </label>
+        <textarea id="issue" name="issue" rows="4" placeholder="Describe your issue here..." required
+          class="w-full rounded-md border border-green-300 p-3 focus:outline-green-500 focus:ring-1 focus:ring-green-500 resize-none"></textarea>
+      </div>
+
+      <button type="submit"
+        class="w-full bg-green-600 hover:bg-green-700 text-white font-bold rounded-md py-3 shadow transition-colors duration-200">
+        Submit Request
+      </button>
+    </form>
+
+    <p class="mt-6 text-center text-green-900 italic text-sm">
+      We'll respond within 1 business day.
+    </p>
+  </main>
+
+  <script>
+    const form = document.getElementById('vendorSupportForm');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+      alert('Thank you for reaching out! Our support team will contact you soon.');
+      form.reset();
+    });
+  </script>
+</body>
+</html>
